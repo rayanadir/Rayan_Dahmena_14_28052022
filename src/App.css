@@ -21,3 +21,15 @@ label {
 .address {
   margin-top: 10px;
 }
+
+#create-employee{
+  display: flex;
+  flex-direction: column;
+}
+
+.submit{
+  margin: 2rem 0 1rem 0;
+  width: 46px;
+  height: 21px;
+  align-self: center;
+}
