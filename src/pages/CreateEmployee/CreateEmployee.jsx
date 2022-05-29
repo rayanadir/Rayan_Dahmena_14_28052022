@@ -1,60 +1,69 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { states } from '../../data/states'
 
 const CreateEmployee = () => {
-    document.title="HRnet"
+    document.title = "HRnet"
+    const saveEmployee = () => {
+        console.log("save employee");
+    }
     return (
         <React.Fragment>
-            <header class="title">
+            <header className="title">
                 <h1>HRnet</h1>
             </header>
             <main>
                 <section className="container">
-                    <a href="employee-list.html">View Current Employees</a>
+                    <Link to='/employee-list'>View Current Employees</Link>
                     <h2>Create Employee</h2>
                     <form action="#" id="create-employee">
-                        <label for="first-name">First Name</label>
-                        <input type="text" id="first-name" />
+                        <label htmlFor="first-name">First Name</label>
+                        <input type="text" id="first-name" required />
 
-                        <label for="last-name">Last Name</label>
-                        <input type="text" id="last-name" />
+                        <label htmlFor="last-name">Last Name</label>
+                        <input type="text" id="last-name" required />
 
-                        <label for="date-of-birth">Date of Birth</label>
-                        <input id="date-of-birth" type="text" />
+                        <label htmlFor="date-of-birth">Date of Birth</label>
+                        <input id="date-of-birth" type="date" required />
 
-                            <label for="start-date">Start Date</label>
-                            <input id="start-date" type="text" />
+                        <label htmlFor="start-date">Start Date</label>
+                        <input id="start-date" type="date" required />
 
-                                <fieldset class="address">
-                                    <legend>Address</legend>
+                        <fieldset className="address">
+                            <legend>Address</legend>
 
-                                    <label for="street">Street</label>
-                                    <input id="street" type="text" />
+                            <label htmlFor="street">Street</label>
+                            <input id="street" type="text" required />
 
-                                    <label for="city">City</label>
-                                    <input id="city" type="text" />
+                            <label htmlFor="city">City</label>
+                            <input id="city" type="text" required />
 
-                                    <label for="state">State</label>
-                                    <select name="state" id="state"></select>
+                            <label htmlFor="state">State</label>
+                            <select name="state" id="state" required>
+                                {states.map((state) => {
+                                    return <option key={state.abbreviation}>{state.name}</option>
+                                })}
+                            </select>
 
-                                    <label for="zip-code">Zip Code</label>
-                                    <input id="zip-code" type="number" />
-                                </fieldset>
+                            <label htmlFor="zip-code">Zip Code</label>
+                            <input id="zip-code" type="number" required />
+                        </fieldset>
 
-                                <label for="department">Department</label>
-                                <select name="department" id="department">
-                                    <option>Sales</option>
-                                    <option>Marketing</option>
-                                    <option>Engineering</option>
-                                    <option>Human Resources</option>
-                                    <option>Legal</option>
-                                </select>
-                            </form>
-                            <button onclick="saveEmployee()">Save</button>
-                            <div id="confirmation" class="modal">Employee Created!</div>
-                        </section>
-                    </main>
-                </React.Fragment>
-                )
+                        <label htmlFor="department">Department</label>
+                        <select name="department" id="department" required>
+                            <option>Sales</option>
+                            <option>Marketing</option>
+                            <option>Engineering</option>
+                            <option>Human Resources</option>
+                            <option>Legal</option>
+                        </select>
+                        <button onClick={saveEmployee} type='submit' className='submit'>Save</button>
+                    </form>
+                    <div id="confirmation" className="modal">Employee Created!</div>
+                </section>
+            </main>
+        </React.Fragment>
+    )
 }
 
 export default CreateEmployee
