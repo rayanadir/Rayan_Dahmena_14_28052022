@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { states } from '../../data/states'
+import Select from '../../components/select/Select'
 
 const CreateEmployee = () => {
     document.title = "HRnet"
@@ -39,11 +39,7 @@ const CreateEmployee = () => {
                             <input id="city" type="text" required />
 
                             <label htmlFor="state">State</label>
-                            <select name="state" id="state" required>
-                                {states.map((state) => {
-                                    return <option key={state.abbreviation}>{state.name}</option>
-                                })}
-                            </select>
+                            <Select />
 
                             <label htmlFor="zip-code">Zip Code</label>
                             <input id="zip-code" type="number" required />
