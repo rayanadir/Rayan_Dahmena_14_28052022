@@ -52,7 +52,7 @@ const CreateEmployee = () => {
                             required
                             showYearDropdown
                             dateFormat="dd/MM/yyyy"
-                            yearDropdownItemNumber={80}
+                            yearDropdownItemNumber={30}
                             scrollableYearDropdown
                         />
 
