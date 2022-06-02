@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Select from '../../components/select/Select'
+import Select from '../../components/select/Select';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const CreateEmployee = () => {
     document.title = "HRnet"
     const saveEmployee = () => {
         console.log("save employee");
     }
+    const [birthdate, onChangeBirthdate] = useState(undefined);
+    const [startdate, onChangeStartdate] = useState(undefined);
     return (
         <React.Fragment>
             <header className="title">
@@ -24,10 +28,33 @@ const CreateEmployee = () => {
                         <input type="text" id="last-name" required />
 
                         <label htmlFor="date-of-birth">Date of Birth</label>
-                        <input id="date-of-birth" type="date" required />
+                        <DatePicker
+                            value={birthdate}
+                            selected={birthdate}
+                            onChange={(date) => onChangeBirthdate(date)}
+                            className='date-input'
+                            id='date-of-birth'
+                            required
+                            showYearDropdown
+                            dateFormat="dd/MM/yyyy"
+                            scrollableYearDropdown
+                            maxDate={new Date()}
+                            yearDropdownItemNumber={new Date().getFullYear()-1900}
+                        />
 
                         <label htmlFor="start-date">Start Date</label>
-                        <input id="start-date" type="date" required />
+                        <DatePicker
+                            value={startdate}
+                            selected={startdate}
+                            onChange={(date) => onChangeStartdate(date)}
+                            className='date-input'
+                            id='start-date'
+                            required
+                            showYearDropdown
+                            dateFormat="dd/MM/yyyy"
+                            yearDropdownItemNumber={80}
+                            scrollableYearDropdown
+                        />
 
                         <fieldset className="address">
                             <legend>Address</legend>
