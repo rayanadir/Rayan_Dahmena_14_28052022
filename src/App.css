@@ -33,3 +33,7 @@ label {
   height: 21px;
   align-self: center;
 }
+
+.date-input{
+  width: 245px;
+}
