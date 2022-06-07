@@ -25,15 +25,57 @@ label {
 #create-employee{
   display: flex;
   flex-direction: column;
+  row-gap: 2rem;
 }
 
 .submit{
-  margin: 2rem 0 1rem 0;
-  width: 46px;
-  height: 21px;
-  align-self: center;
+  height: 35px;
+  padding: 7px 26px;
+  cursor: pointer;
+  border-radius: 20px;
+  border: 0.5px solid;
 }
 
 .date-input{
+  width: 245px;
+}
+
+#employee-table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 890px;
+}
+
+#employee-table td, #employee-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#employee-table tr:nth-child(even){background-color: #f2f2f2;}
+
+#employee-table tr:hover {background-color: #ddd;}
+
+#employee-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+.input-address{
+  display: flex;
+  flex-direction: row;
+  column-gap: 2rem;
+}
+
+.department_submit{
+  display: flex;
+  align-items: flex-end;
+  column-gap: 12.5rem;
+}
+
+input{
+  height: 20px;
   width: 245px;
 }
