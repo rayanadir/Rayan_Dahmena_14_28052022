@@ -1,19 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialSelectDepartment = {
-    department: "Sales"
+    selected:false,
 }
 
 const selectDepartmentSlice = createSlice({
     name:"selectDepartment",
     initialState: initialSelectDepartment,
     reducers:{
-        selectDepartment: (state,action) => {
-            state.department=action.payload
-        }
+        departmentSelected: (state) => {
+            state.selected=true;
+        },
     }
 })
 
-export const { selectDepartment } = selectDepartmentSlice.actions;
+export const { departmentSelected } = selectDepartmentSlice.actions;
 
 export const selectDepartmentReducer = selectDepartmentSlice.reducer;
