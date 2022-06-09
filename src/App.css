@@ -1,15 +1,36 @@
+body{
+  background-color: aliceblue;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+main{
+  max-width: 900px;
+  margin: auto;
+}
+
 .title {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  width: 620px;
+  margin: auto;
 }
 
+.link{
+  text-decoration-line: none;
+}
+
+.link:hover{
+  text-decoration-line: underline;
+}
 
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: fit-content;
+  margin: auto;
 }
 
 label {
@@ -20,24 +41,27 @@ label {
 
 .address {
   margin-top: 10px;
+  background-color: aliceblue;
+  border-radius: 5px;
 }
 
 #create-employee{
   display: flex;
   flex-direction: column;
   row-gap: 2rem;
+  border: 1px solid;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 5px;
 }
 
 .submit{
   height: 35px;
-  padding: 7px 26px;
+  padding: 7px 35px;
   cursor: pointer;
   border-radius: 20px;
   border: 0.5px solid;
-}
-
-.date-input{
-  width: 245px;
+  background-color: aliceblue;
 }
 
 #employee-table {
@@ -71,11 +95,17 @@ label {
 
 .department_submit{
   display: flex;
-  align-items: flex-end;
-  column-gap: 12.5rem;
+  justify-content: center;
 }
 
 input{
-  height: 20px;
-  width: 245px;
+  width: 253px;
+  height: 24px;
+}
+
+.select-required{
+  display: none;
+  color: red;
+  margin: 0;
+  font-size: 12px;
 }
