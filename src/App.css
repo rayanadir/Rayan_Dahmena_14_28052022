@@ -64,29 +64,6 @@ label {
   background-color: aliceblue;
 }
 
-#employee-table {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 890px;
-}
-
-#employee-table td, #employee-table th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-#employee-table tr:nth-child(even){background-color: #f2f2f2;}
-
-#employee-table tr:hover {background-color: #ddd;}
-
-#employee-table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
-}
-
 .input-address{
   display: flex;
   flex-direction: row;
@@ -108,4 +85,21 @@ input{
   color: red;
   margin: 0;
   font-size: 12px;
+}
+
+#employee-div{
+  width: 1080px;
+  max-width: none;
+}
+
+.header-employee-list{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1080px;
+  margin: auto;
+}
+
+.table{
+  width: inherit;
 }
