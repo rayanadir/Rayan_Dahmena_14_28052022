@@ -10,32 +10,8 @@ const formatDate = date => {
 }
 
 const getEmployees = () => {
-  let employees = [
-    {
-      firstName: "Prénom",
-      lastName: "Nom",
-      startDate: formatDate(new Date("01-01-2022")),
-      department: "Legal",
-      dateOfBirth: formatDate(new Date("01-10-2022")),
-      street: "b",
-      city: "Paris",
-      state: "AL",
-      zipCode: 1
-    },
-    {
-      firstName: "Firstname",
-      lastName: "Lastname",
-      startDate: formatDate(new Date("01-14-2021")),
-      department: "Marketing",
-      dateOfBirth: formatDate(new Date("10-05-2022")),
-      street: "c",
-      city: "New York",
-      state: "NY",
-      zipCode: 2
-    },
-  ]
-  employees = [...new Set(employees.map((employee, index) => { return { ...employee, id: index } }))];
-  console.log(employees);
+  let employees = JSON.parse(localStorage.getItem('employees'));
+  employees = [...new Set(employees.map((employee, index) => { return { ...employee, id: index, startDate: formatDate(employee.startdate), dateOfBirth: formatDate(employee.birthdate) } }))];
   return employees;
 }
 
@@ -66,16 +42,14 @@ const EmployeeList = () => {
         <h1>Current Employees</h1>
         <Link to="/" className='link'>Home</Link>
       </header>
-
       <section className='table'>
-        <div style={{ height: 400, width: '100%', backgroundColor: "white" }}>
+        <div style={{ height: 500, width: '100%', backgroundColor: "white" }}>
           <DataGrid
             rows={getEmployees()}
             columns={COLUMNS}
-            pageSize={5}
-            rowsPerPageOptions={[5]}
             disableColumnMenu={true}
-            components = {{Toolbar : QuickSearchToolbar}}
+            rowsPerPageOptions={[10,25,100]}
+            components={{ Toolbar: QuickSearchToolbar }}
             initialState={{
               filter: {
                 filterModel: {
@@ -87,8 +61,6 @@ const EmployeeList = () => {
           />
         </div>
       </section>
-
-
     </main>
   );
 }
