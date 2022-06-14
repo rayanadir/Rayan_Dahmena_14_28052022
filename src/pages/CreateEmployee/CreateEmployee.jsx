@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-//import Select from '../../components/select/Select';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useSelector, useDispatch } from "react-redux"
@@ -10,10 +9,17 @@ import Select from 'react-select';
 import { stateSelected } from '../../slices/statesSlice';
 import { departmentSelected } from '../../slices/departmentSlice';
 
+//import { Modal, useModal } from 'react-modal-library-rayan-dahmena';
+//import Modal from "react-modal-library-rayan-dahmena";
+import {useModal, Modal} from "react-modal-library-rayan-dahmena"
+import "react-modal-library-rayan-dahmena/dist"
+import ElementModal from '../../components/ElementModal/ElementModal';
+
 const CreateEmployee = () => {
     document.title = "HRnet"
 
     const dispatch = useDispatch()
+    const { isShowing, toggle } = useModal()
 
     const saveEmployee = (e) => {
         e.preventDefault();
@@ -39,9 +45,10 @@ const CreateEmployee = () => {
             employees.push(employee);
             localStorage.setItem('employees', JSON.stringify(employees));
             console.log(employees);
+            toggle();
         }
     }
-
+    
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [birthdate, onChangeBirthdate] = useState(null);
@@ -64,7 +71,6 @@ const CreateEmployee = () => {
 
     const STATES = [...new Set(states.map((state) => { return { value: state.abbreviation, label: state.name } }))];
     const DEPARTMENTS = [...new Set(departments.map((department) => { return { value: department.name, label: department.name } }))]
-
 
     return (
         <React.Fragment>
@@ -114,9 +120,7 @@ const CreateEmployee = () => {
                                     scrollableYearDropdown
                                 />
 
-
                                 <label htmlFor="department">Department</label>
-                                {/*<Select name="department" id="department" required={true} options={DEPARTMENTS} placeholder="Select a department" />*/}
                                 <Select onChange={(e) => { setDepartment(e.label); dispatch(departmentSelected()) }} options={DEPARTMENTS} placeholder="Select a department" className='select' isMulti={false} />
                                 <p className='select-required' id='department-required'>Please select a department</p>
 
@@ -132,7 +136,6 @@ const CreateEmployee = () => {
                                 <input id="city" type="text" required onChange={(e) => { setCity(e.target.value) }} />
 
                                 <label htmlFor="state">State</label>
-                                {/*<Select id="state" name="state" options={STATES} required={true} placeholder="Select a state" />*/}
                                 <Select onChange={(e) => { setState(e.label); dispatch(stateSelected()) }} options={STATES} placeholder="Select a state" className='select' isMulti={false} />
                                 <p className='select-required' id='state-required'>Please select a state</p>
 
@@ -141,10 +144,10 @@ const CreateEmployee = () => {
                             </fieldset>
                         </div>
                         <div className='department_submit'>
-                            <button type='submit' className='submit'>Save</button>
+                            <button onClick={(e)=> {saveEmployee(e)}} type="submit" className='submit'>Save</button>
                         </div>
                     </form>
-                    {/*<div id="confirmation" className="modal">Employee Created!</div>*/}
+                    <Modal element={<ElementModal />} isShowing={isShowing} toggle={toggle} />
                 </section>
             </main>
         </React.Fragment>
