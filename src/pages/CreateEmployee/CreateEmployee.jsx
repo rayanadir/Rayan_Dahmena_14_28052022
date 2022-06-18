@@ -9,12 +9,13 @@ import Select from 'react-select';
 import { stateSelected } from '../../slices/statesSlice';
 import { departmentSelected } from '../../slices/departmentSlice';
 
-//import { Modal, useModal } from 'react-modal-library-rayan-dahmena';
-//import Modal from "react-modal-library-rayan-dahmena";
 import {useModal, Modal} from "react-modal-library-rayan-dahmena"
-import "react-modal-library-rayan-dahmena/dist"
 import ElementModal from '../../components/ElementModal/ElementModal';
 
+/**
+ * returns the CreateEmployee page
+ * @returns {JSX}
+ */
 const CreateEmployee = () => {
     document.title = "HRnet"
 
