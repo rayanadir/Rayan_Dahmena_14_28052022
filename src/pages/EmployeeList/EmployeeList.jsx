@@ -5,16 +5,29 @@ import moment from 'moment';
 import { DataGrid, GridToolbarQuickFilter, GridLinkOperator } from '@mui/x-data-grid';
 import { Box } from '@mui/material';
 
+/**
+ * 
+ * @param {Date} date
+ * @returns new date formatted
+ */
 const formatDate = date => {
   return moment(date).format("L");
 }
 
+/**
+ * returns an array of employees
+ * @returns {Array}
+ */
 const getEmployees = () => {
   let employees = JSON.parse(localStorage.getItem('employees'));
   employees = [...new Set(employees.map((employee, index) => { return { ...employee, id: index, startDate: formatDate(employee.startdate), dateOfBirth: formatDate(employee.birthdate) } }))];
   return employees;
 }
 
+/**
+ * returns a search toolbar
+ * @returns {JSX}
+ */
 const QuickSearchToolbar = () => {
   return (
     <Box
@@ -34,6 +47,10 @@ const QuickSearchToolbar = () => {
   );
 }
 
+/**
+ * returns the EmployeeList page
+ * @returns {JSX}
+ */
 const EmployeeList = () => {
   document.title = "HRnet - Current Employees";
   return (
