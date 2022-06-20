@@ -57,7 +57,7 @@ const EmployeeList = () => {
     <main id="employee-div" className="container">
       <header className='header-employee-list'>
         <h1>Current Employees</h1>
-        <Link to="/" className='link'>Home</Link>
+        <Link to="/Rayan_Dahmena_14_28052022" className='link'>Home</Link>
       </header>
       <section className='table'>
         <div style={{ height: 500, width: '100%', backgroundColor: "white" }}>
