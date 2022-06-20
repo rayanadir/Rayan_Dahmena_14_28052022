@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Rayan_Dahmena_14_28052022/static/css/main.0ff0ee06.css",
-    "main.js": "/Rayan_Dahmena_14_28052022/static/js/main.cd88538b.js",
+    "main.js": "/Rayan_Dahmena_14_28052022/static/js/main.c92f7a65.js",
     "static/js/787.312e6e78.chunk.js": "/Rayan_Dahmena_14_28052022/static/js/787.312e6e78.chunk.js",
     "index.html": "/Rayan_Dahmena_14_28052022/index.html",
     "main.0ff0ee06.css.map": "/Rayan_Dahmena_14_28052022/static/css/main.0ff0ee06.css.map",
-    "main.cd88538b.js.map": "/Rayan_Dahmena_14_28052022/static/js/main.cd88538b.js.map",
+    "main.c92f7a65.js.map": "/Rayan_Dahmena_14_28052022/static/js/main.c92f7a65.js.map",
     "787.312e6e78.chunk.js.map": "/Rayan_Dahmena_14_28052022/static/js/787.312e6e78.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0ff0ee06.css",
-    "static/js/main.cd88538b.js"
+    "static/js/main.c92f7a65.js"
   ]
 }
