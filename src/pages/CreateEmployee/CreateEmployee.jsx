@@ -45,7 +45,6 @@ const CreateEmployee = () => {
             }
             employees.push(employee);
             localStorage.setItem('employees', JSON.stringify(employees));
-            console.log(employees);
             toggle();
         }
     }
