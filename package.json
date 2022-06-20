@@ -2,6 +2,7 @@
   "name": "hrnet_react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://rayanadir.github.io/Rayan_Dahmena_14_28052022/",
   "dependencies": {
     "@emotion/styled": "^11.8.1",
     "@mui/material": "^5.8.3",
@@ -18,7 +19,7 @@
     "react-datepicker": "^4.8.0",
     "react-dom": "^18.1.0",
     "react-modal": "^3.15.1",
-    "react-modal-library-rayan-dahmena": "^1.0.3",
+    "react-modal-library-rayan-dahmena": "^1.0.6",
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
@@ -30,7 +31,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -49,5 +52,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
