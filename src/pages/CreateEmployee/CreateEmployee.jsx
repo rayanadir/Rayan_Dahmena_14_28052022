@@ -76,7 +76,7 @@ const CreateEmployee = () => {
         <React.Fragment>
             <header className="title">
                 <h1>HRnet</h1>
-                <Link className='link' to='/Rayan_Dahmena_14_28052022/employee-list'>View Current Employees</Link>
+                <Link className='link' to='/employee-list'>View Current Employees</Link>
             </header>
             <main>
                 <section className="container">
