@@ -19,7 +19,7 @@ const formatDate = date => {
  * @returns {Array}
  */
 const getEmployees = () => {
-  let employees = JSON.parse(localStorage.getItem('employees'));
+  let employees = JSON.parse(localStorage.getItem('employees')) || [];
   employees = [...new Set(employees.map((employee, index) => { return { ...employee, id: index, startDate: formatDate(employee.startdate), dateOfBirth: formatDate(employee.birthdate) } }))];
   return employees;
 }
