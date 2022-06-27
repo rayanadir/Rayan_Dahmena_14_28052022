@@ -4,6 +4,7 @@ import { COLUMNS } from '../../data/table_columns';
 import moment from 'moment';
 import { DataGrid, GridToolbarQuickFilter, GridLinkOperator } from '@mui/x-data-grid';
 import { Box } from '@mui/material';
+import { useSelector } from 'react-redux';
 
 /**
  * 
@@ -12,16 +13,6 @@ import { Box } from '@mui/material';
  */
 const formatDate = date => {
   return moment(date).format("L");
-}
-
-/**
- * returns an array of employees
- * @returns {Array}
- */
-const getEmployees = () => {
-  let employees = JSON.parse(localStorage.getItem('employees')) || [];
-  employees = [...new Set(employees.map((employee, index) => { return { ...employee, id: index, startDate: formatDate(employee.startdate), dateOfBirth: formatDate(employee.birthdate) } }))];
-  return employees;
 }
 
 /**
@@ -53,6 +44,8 @@ const QuickSearchToolbar = () => {
  */
 const EmployeeList = () => {
   document.title = "HRnet - Current Employees";
+  let employees = useSelector((state) => state.employees.employees);
+  employees = [...new Set(employees.map((employee, index) => { return { ...employee, id: index, startDate: formatDate(employee.startdate), dateOfBirth: formatDate(employee.birthdate) } }))];
   return (
     <main id="employee-div" className="container">
       <header className='header-employee-list'>
@@ -62,7 +55,7 @@ const EmployeeList = () => {
       <section className='table'>
         <div style={{ height: 500, width: '100%', backgroundColor: "white" }}>
           <DataGrid
-            rows={getEmployees()}
+            rows={employees}
             columns={COLUMNS}
             disableColumnMenu={true}
             rowsPerPageOptions={[10,25,100]}
