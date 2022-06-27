@@ -8,6 +8,7 @@ import { departments } from '../../data/departments';
 import Select from 'react-select';
 import { stateSelected } from '../../slices/statesSlice';
 import { departmentSelected } from '../../slices/departmentSlice';
+import { addEmployee } from '../../slices/employeesSlice'
 
 import {useModal, Modal} from "react-modal-library-rayan-dahmena"
 import ElementModal from '../../components/ElementModal/ElementModal';
@@ -31,7 +32,6 @@ const CreateEmployee = () => {
             document.getElementById("department-required").style.display = "block"
         }
         if (isStateSelected && isDepartmentSelected) {
-            const employees = JSON.parse(localStorage.getItem('employees')) || [];
             const employee = {
                 firstName,
                 lastName,
@@ -43,8 +43,7 @@ const CreateEmployee = () => {
                 zipCode,
                 department
             }
-            employees.push(employee);
-            localStorage.setItem('employees', JSON.stringify(employees));
+            dispatch(addEmployee(employee))
             toggle();
         }
     }
