@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Rayan_Dahmena_14_28052022/static/css/main.0ff0ee06.css",
-    "main.js": "/Rayan_Dahmena_14_28052022/static/js/main.2b07224e.js",
+    "main.css": "/Rayan_Dahmena_14_28052022/static/css/main.a42099ba.css",
+    "main.js": "/Rayan_Dahmena_14_28052022/static/js/main.df0dda64.js",
     "static/js/787.312e6e78.chunk.js": "/Rayan_Dahmena_14_28052022/static/js/787.312e6e78.chunk.js",
     "index.html": "/Rayan_Dahmena_14_28052022/index.html",
-    "main.0ff0ee06.css.map": "/Rayan_Dahmena_14_28052022/static/css/main.0ff0ee06.css.map",
-    "main.2b07224e.js.map": "/Rayan_Dahmena_14_28052022/static/js/main.2b07224e.js.map",
+    "main.a42099ba.css.map": "/Rayan_Dahmena_14_28052022/static/css/main.a42099ba.css.map",
+    "main.df0dda64.js.map": "/Rayan_Dahmena_14_28052022/static/js/main.df0dda64.js.map",
     "787.312e6e78.chunk.js.map": "/Rayan_Dahmena_14_28052022/static/js/787.312e6e78.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0ff0ee06.css",
-    "static/js/main.2b07224e.js"
+    "static/css/main.a42099ba.css",
+    "static/js/main.df0dda64.js"
   ]
 }
