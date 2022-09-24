@@ -2,7 +2,7 @@
   "name": "hrnet_react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://rayanadir.github.io/Rayan_Dahmena_14_28052022",
+  "homepage": "https://rayanadir.github.io/Rayan_Dahmena_14_28052022",
   "dependencies": {
     "@emotion/styled": "^11.8.1",
     "@mui/material": "^5.8.3",
