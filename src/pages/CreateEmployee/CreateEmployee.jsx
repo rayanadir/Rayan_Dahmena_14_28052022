@@ -6,8 +6,9 @@ import { useSelector, useDispatch } from "react-redux"
 import { states } from '../../data/states';
 import { departments } from '../../data/departments';
 import Select from 'react-select';
-import { stateSelected } from '../../slices/statesSlice';
-import { departmentSelected } from '../../slices/departmentSlice';
+import { stateSelected, resetSelectedState } from '../../slices/statesSlice';
+import { departmentSelected, resetSelectDepartment } from '../../slices/departmentSlice';
+import { addEmployee } from '../../slices/employeesSlice'
 
 import {useModal, Modal} from "react-modal-library-rayan-dahmena"
 import ElementModal from '../../components/ElementModal/ElementModal';
@@ -22,16 +23,39 @@ const CreateEmployee = () => {
     const dispatch = useDispatch()
     const { isShowing, toggle } = useModal()
 
+
+    
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [birthdate, onChangeBirthdate] = useState(undefined);
+    const [startdate, onChangeStartdate] = useState(undefined);
+    const [street, setStreet] = useState("");
+    const [city, setCity] = useState("");
+    const [isStateSelected, setIsStateSelected] = useState(false) //useSelector(state => state.state.selected)
+    const [state, setState] = useState(undefined)
+    const [zipCode, setZipCode] = useState(undefined);
+    const [isDepartmentSelected, setIsDepartmentSelected] = useState(false) //useSelector((state) => state.department.selected)
+    const [department, setDepartment] = useState(undefined)
+
+    const [deptErr, setDeptErr] = useState("");
+    const [stateErr, setStateErr] = useState("");
+
     const saveEmployee = (e) => {
         e.preventDefault();
         if (isStateSelected === false) {
-            document.getElementById("state-required").style.display = "block"
+            //document.getElementById("state-required").style.display = "block"
+            setStateErr("err")
         }
         if (isDepartmentSelected === false) {
-            document.getElementById("department-required").style.display = "block"
+            //document.getElementById("department-required").style.display = "block"
+            setDeptErr("err")
         }
+        console.log(isStateSelected + ' ' + isDepartmentSelected);
         if (isStateSelected && isDepartmentSelected) {
-            const employees = JSON.parse(localStorage.getItem('employees')) || [];
+            setIsStateSelected(false);
+            setIsDepartmentSelected(false);
+            setDeptErr("");
+            setStateErr("")
             const employee = {
                 firstName,
                 lastName,
@@ -43,31 +67,15 @@ const CreateEmployee = () => {
                 zipCode,
                 department
             }
-            employees.push(employee);
-            localStorage.setItem('employees', JSON.stringify(employees));
+            dispatch(addEmployee(employee))
+            document.getElementById("create-employee").reset();
+            setFirstName(""); setLastName("");onChangeBirthdate(undefined);onChangeStartdate(undefined);setStreet("");setCity('');setState(undefined);setZipCode(undefined);setDepartment(undefined);
+            document.getElementById('department').value=undefined;
+            document.getElementById("state").value=undefined;
+            document.getElementById("zip-code").value=null;
             toggle();
         }
     }
-    
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [birthdate, onChangeBirthdate] = useState(null);
-    const [startdate, onChangeStartdate] = useState(null);
-    const [street, setStreet] = useState("");
-    const [city, setCity] = useState("");
-    const isStateSelected = useSelector(state => state.state.selected)
-    const [state, setState] = useState(null)
-    const [zipCode, setZipCode] = useState(null);
-    const isDepartmentSelected = useSelector((state) => state.department.selected)
-    const [department, setDepartment] = useState(null)
-    useSelector((state) => {
-        if (state.state.selected === true) {
-            document.getElementById("state-required").style.display = "none"
-        }
-        if (state.department.selected === true) {
-            document.getElementById("department-required").style.display = "none"
-        }
-    });
 
     const STATES = [...new Set(states.map((state) => { return { value: state.abbreviation, label: state.name } }))];
     const DEPARTMENTS = [...new Set(departments.map((department) => { return { value: department.name, label: department.name } }))]
@@ -86,10 +94,10 @@ const CreateEmployee = () => {
                         <div className='input-address'>
                             <div className='text-date-input'>
                                 <label htmlFor="first-name">First Name</label>
-                                <input type="text" id="first-name" required onChange={(e) => { setFirstName(e.target.value) }} />
+                                <input value={firstName} type="text" id="first-name" required onChange={(e) => { setFirstName(e.target.value) }} />
 
                                 <label htmlFor="last-name">Last Name</label>
-                                <input type="text" id="last-name" required onChange={(e) => { setLastName(e.target.value) }} />
+                                <input value={lastName} type="text" id="last-name" required onChange={(e) => { setLastName(e.target.value) }} />
 
                                 <label htmlFor="date-of-birth">Date of Birth</label>
                                 <DatePicker
@@ -121,8 +129,8 @@ const CreateEmployee = () => {
                                 />
 
                                 <label htmlFor="department">Department</label>
-                                <Select onChange={(e) => { setDepartment(e.label); dispatch(departmentSelected()) }} options={DEPARTMENTS} placeholder="Select a department" className='select' isMulti={false} />
-                                <p className='select-required' id='department-required'>Please select a department</p>
+                                <Select  id="department" onChange={(e) => { setDepartment(e.label); setIsDepartmentSelected(true); }} options={DEPARTMENTS} placeholder="Select a department" className='select' isMulti={false} />
+                                {stateErr==="err" ? <p className='select-required' id='department-required'>Please select a department</p> : null}
 
                             </div>
 
@@ -130,14 +138,14 @@ const CreateEmployee = () => {
                                 <legend>Address</legend>
 
                                 <label htmlFor="street">Street</label>
-                                <input id="street" type="text" required onChange={(e) => { setStreet(e.target.value) }} />
+                                <input value={street} id="street" type="text" required onChange={(e) => { setStreet(e.target.value) }} />
 
                                 <label htmlFor="city">City</label>
-                                <input id="city" type="text" required onChange={(e) => { setCity(e.target.value) }} />
+                                <input value={city} id="city" type="text" required onChange={(e) => { setCity(e.target.value) }} />
 
                                 <label htmlFor="state">State</label>
-                                <Select onChange={(e) => { setState(e.label); dispatch(stateSelected()) }} options={STATES} placeholder="Select a state" className='select' isMulti={false} />
-                                <p className='select-required' id='state-required'>Please select a state</p>
+                                <Select  id="state" onChange={(e) => { setState(e.label); setIsStateSelected(true); }} options={STATES} placeholder="Select a state" className='select' isMulti={false} />
+                                {deptErr==="err" ? <p className='select-required' id='state-required'>Please select a state</p> : null} 
 
                                 <label htmlFor="zip-code">Zip Code</label>
                                 <input id="zip-code" type="number" required onChange={(e) => { setZipCode(e.target.value) }} />

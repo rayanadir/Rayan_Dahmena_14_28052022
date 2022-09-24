@@ -11,9 +11,12 @@ const selectStateSlice = createSlice({
         stateSelected: (state) => {
             state.selected=true
         },
+        resetSelectedState: (state) => {
+            state.selected=false;
+        }
     }
 })
 
-export const { stateSelected } = selectStateSlice.actions
+export const { stateSelected, resetSelectedState } = selectStateSlice.actions
 
 export const selectStateReducer = selectStateSlice.reducer;

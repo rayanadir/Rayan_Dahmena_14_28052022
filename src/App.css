@@ -81,7 +81,7 @@ input{
 }
 
 .select-required{
-  display: none;
+  /*display: none;*/
   color: red;
   margin: 0;
   font-size: 12px;

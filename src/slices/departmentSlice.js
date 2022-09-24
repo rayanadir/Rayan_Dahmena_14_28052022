@@ -11,9 +11,12 @@ const selectDepartmentSlice = createSlice({
         departmentSelected: (state) => {
             state.selected=true;
         },
+        resetSelectDepartment: (state) => {
+            state.selected=false;
+        }
     }
 })
 
-export const { departmentSelected } = selectDepartmentSlice.actions;
+export const { departmentSelected, resetSelectDepartment } = selectDepartmentSlice.actions;
 
 export const selectDepartmentReducer = selectDepartmentSlice.reducer;
